@@ -1,0 +1,89 @@
+.main-container {
+    position: relative;
+    width: 700px;
+    margin: auto;
+    justify-content: space-around;
+    align-content: center;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#first-input{
+    align-items: baseline;
+}
+
+h1 {
+    text-align: center;
+    margin: 50px;
+    font-size: 60px;
+    font-family: 'Mukta', sans-serif;
+    color: #392F5A;
+}
+
+#input-task{
+    width: 500px;
+    height: 50px;
+    border-bottom: 2px groove #392F5A;
+    border-top-style: hidden;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    margin: 10px;
+    font-size: 20px;
+}
+
+#add-task-button{
+    width: 120px;
+    height: 50px;
+    margin: 10px;
+    color: #392F5A;
+    font-family: 'Lora', serif;
+    font-weight: bold;
+    border: 2px ridge #392F5A;
+}
+
+input[type='checkbox']{
+    width: 20px;
+    height: 20px;
+    align-items: center;
+}
+
+#task-list {
+    position: relative;
+    width: 600px;
+}
+
+li{
+    width: 550px;
+    margin-bottom: 20px;
+    align-items: baseline;
+}
+
+span {
+    font-size: 30px;
+    font-family: 'Lora', serif;
+    color: #392F5A;
+    width: 300px;
+    margin-left: auto;
+}
+
+.delete-btn {
+    width: 27px;
+    height: 27px;
+    float: right;
+    background-image: url("icons8-close-48.png");
+    background-size: 25px 25px;
+    border-color: #392F5A;
+}
+
+ input[type='checkbox']:checked + .task {
+     text-decoration: line-through;
+ }
+
+
+.crossed-out{
+    text-decoration: line-through;
+}
+
+#list-container ul{
+    list-style-type: none;
+}
