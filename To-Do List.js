@@ -2,8 +2,10 @@
 const inputText = document.querySelector('#input-task');
 const taskBtn = document.querySelector('#add-task-button');
 
+//create array
 let todoList = [];
 
+//retrieve task list as an array
 const loadLocalStorage = () => {
     if (localStorage.getItem('tasks')) {
         todoList = JSON.parse(localStorage.getItem("tasks")) || [];
@@ -11,24 +13,28 @@ const loadLocalStorage = () => {
     }
 }
 
+//make event which load js after html without waiting for css, images etc
  document.addEventListener('DOMContentLoaded', () => {
      loadLocalStorage();
  })
 
-
+//create function which would show us tasks
 const renderList = (todoList) => {
 
+    //prevent dublicates
     const list = document.querySelector('#task-list');
     while (list.firstChild) {
         list.removeChild(list.firstChild);
     }
-console.log(todoList);
+
+    //make foreach loop to add new tasks into list
     todoList.forEach((item) => {
         const rendered = renderItem(item);
         list.appendChild(rendered);
     });
 }
 
+//create function to make model of new task
 const renderItem = (item) => {
     const makeLi = document.createElement('li');
 
@@ -64,19 +70,23 @@ const renderItem = (item) => {
     return makeLi;
 }
 
+//create button to add new tasks
 taskBtn.addEventListener('click', (e) => {
 
     if (inputText.value !== '') {
          e.preventDefault();
 
+        //create object and its properties
         let newTask = {}
         newTask.name = inputText.value;
         newTask.checked = false;
+
+        //add object into array
         if (inputText.value !== 0) {
             todoList.push(newTask);
             updateLocalStorage();
         }
-console.log(todoList);
+
         renderList(todoList);
 
         //  clear input
@@ -84,39 +94,8 @@ console.log(todoList);
     }
 })
 
-
-// make delete button work
-/*const deleteButton = document.getElementsByClassName("delete-btn");
-for (let i = 0; i < deleteButton.length; i++) {
-    deleteButton[i].addEventListener("click", (e) => {
-        const index = todoList.indexOf(e.target.parentElement);
-        if (index !== -1) {
-            todoList.splice(index, 1);
-        }
-        updateLocalStorage();
-        renderList();
-    }
-)}*/
-
-    /*todoList.splice(, 1);
-    updateLocalStorage();
-    renderList();*/
-  //  this.parentNode.remove();
-
-
-function updateLocalStorage() {
+//mutate array into strings
+const updateLocalStorage = () => {
     localStorage.setItem("tasks", JSON.stringify(todoList));
 }
 
-/*
-//make event when check checkbox
-const changeSpan = document.getElementsByTagNameNS('checkbox');
-changeSpan.addEventListener('change', (e) => {
-    const task = document.querySelector('.task');
-    if (e.target.checked) {
-        task.classList.add('crossed-out');
-    } else {
-        task.classList.remove('crossed-out');
-    }
-})
-*/
